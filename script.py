@@ -1,4 +1,5 @@
 
+import os
 import numpy as np
 import pandas as pd
 
@@ -17,7 +18,8 @@ def model_fn(model_dir):
     clf = joblib.load(os.path.join(model_dir, 'model.joblib'))
     return clf
 
-if __name__ = "__main__":
+
+if __name__ == "__main__":
     print('[INFO] Extracting arguments')
     parser = argparse.ArgumentParser()
 
@@ -34,7 +36,7 @@ if __name__ = "__main__":
 
     args, _ = parser.parse_known_args()
 
-    print("SKLearn Version", skearn.__version__)
+    print("SKLearn Version", sklearn.__version__)
     print("Joblib Version", joblib.__version__)
 
     print('[INFO] Reading Data')
@@ -64,7 +66,7 @@ if __name__ = "__main__":
     print()
     
     print('Training RandomForest Model ...')
-    model = RandomForestClassifier(n_estimaors=args.n_estimators , random_state=args.random_state, verbose=True)
+    model = RandomForestClassifier(n_estimators=args.n_estimators , random_state=args.random_state, verbose=True)
     model.fit(X_train, y_train)
     print()
 
@@ -84,17 +86,3 @@ if __name__ = "__main__":
     print('[TESTING] Model Accuracy is :', test_acc)
     print('[TESTING] Testing Report: ')
     print(test_report)
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
